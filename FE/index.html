@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="sidenav.css">
+    <link rel="icon" type="image/x-icon" href="Assets/incubator.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+      .chart-container {
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+      }
+      .chart-container canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+      .patient-table {
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        border-collapse: collapse;
+      }
+      .patient-table th, .patient-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .patient-table th {
+        background-color: #f2f2f2;
+        text-align: left;
+      }
+      .alarm {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="sidenav">
+        <div style="max-width:100%;text-align:center;height:180px;overflow:hidden;">
+          <a href="#section1"><img src="Assets/incubator.jpg" style="margin-top:30px;max-width:40%;height:auto;"></a>
+        </div>
+        <h1>Incubator Dashboard</h1>
+        <input type="text" id="searchInput" placeholder="Search by Patient Name or ID">
+        <button onclick="searchPatient()">Search</button>
+        <ul>
+          <a href="#section1"><li>Temperature</li></a>
+          <a href="#section2"><li>Humidity</li></a>
+          <a href="#section3"><li>Heart Rate</li></a>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <section id="section1">
+          <h1>Temperature</h1>
+          <div class="chart-container">
+            <canvas id="temperatureChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="temperatureHistogram"></canvas>
+          </div>
+        </section>
+        <section id="section2">
+          <h1>Humidity</h1>
+          <div class="chart-container">
+            <canvas id="humidityChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="humidityHistogram"></canvas>
+          </div>
+        </section>
+        <section id="section3">
+          <h1>Heart Rate</h1>
+          <div class="chart-container">
+            <canvas id="heartRateChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="heartRateHistogram"></canvas>
+          </div>
+        </section>
+        <section id="section4">
+          <h1>Patients</h1>
+          <table class="patient-table" id="patientTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Heart Rate</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Patient rows will be added here dynamically -->
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
